@@ -1,0 +1,16 @@
+- name: Conectividade com todas as VMs
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Verificar conexão
+      ansible.builtin.ping:
+
+- name: A VM app alcança a VM db pela rede interna
+  hosts: app
+  gather_facts: false
+  tasks:
+    - name: Testar a porta SSH da VM db a partir da VM app
+      ansible.builtin.wait_for:
+        host: "{{ groups['db'][0] }}"
+        port: 22
+        timeout: 5

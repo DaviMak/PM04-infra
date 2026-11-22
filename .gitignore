@@ -3,3 +3,5 @@
 *.tfstate.*
 .terraform/
 *.tfvars
+localstack_providers_override.tf
+ansible/inventory/
